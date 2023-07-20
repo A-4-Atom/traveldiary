@@ -1,13 +1,19 @@
 <script>
 	import { store } from '../lib/store.js';
 	import CardDetails from '../components/CardDetails.svelte';
+	import Modal from '../components/Modal.svelte';
 	let sidebarOpen = false;
 	let selectedCard = null;
+	let isModalOpen = false;
 
+	function openModal(){
+		isModalOpen = true;
+	}
+	function closeModal(){
+		isModalOpen = false;
+	}
 
 	let searchText = '';
-
-
 	function toggleSidebar() {
 		sidebarOpen = !sidebarOpen;
 	}
@@ -65,7 +71,8 @@
 					<span class="text-white group-hover:text-cyan-300">{card.title}</span>
 				</a>
 			{/each}
-			<button
+			<button 
+				on:click={() => openModal()}
 				class="space-x-2 py-3 px-4 bg-cyan-300 border-2 w-full rounded text-cyan-700 hover:text-cyan-300 border-cyan-200 flex justify-center my-4 hover:bg-cyan-600 transition duration-200"
 				><svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -111,4 +118,5 @@
 			<CardDetails {...selectedCard} />
 		</div>
 	</div>
+	<Modal isOpen={isModalOpen} {closeModal}/>
 </div>

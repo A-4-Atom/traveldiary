@@ -1,7 +1,7 @@
 <script>
 	import { store } from '../../lib/store';
 	import CardDetails from '../../components/CardDetails.svelte';
-	import { onMount, beforeUpdate, afterUpdate } from 'svelte';
+	// import { onMount, beforeUpdate, afterUpdate } from 'svelte';
 	let searchText = '';
 	let allCards = $store;
 
